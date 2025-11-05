@@ -1,0 +1,70 @@
+# Ignore build outputs
+bin/
+obj/
+**/bin/
+**/obj/
+
+# Visual Studio / Rider / VS Code
+.vs/
+.vscode/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.sln.ide
+*.sln.iml
+*.DotSettings.user
+
+# NuGet
+*.nupkg
+packages/
+.nuget/
+
+# Publish / deployment artifacts
+publish/
+*.Publish.xml
+# Optional: ignore single-file publish artifacts (uncomment if desired)
+# /bin/Release/net*/win-*/publish/
+
+# Test results / coverage
+TestResults/
+coverage/
+coverage*.xml
+*.coverage
+*.coveragexml
+.vstest/
+
+# Rider caches
+.idea/
+*.idea/
+
+# Logs and temp files
+*.log
+*.tmp
+*.temp
+
+# User secrets and keys
+secrets.json
+*.pfx
+*.p12
+*.key
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Mono
+mono_crash.*
+
+# Optional: native / runtime artifacts often produced when publishing (uncomment if you don't want these in repo)
+# *.exe
+# *.dll
+# *.so
+# *.dylib
+
+# Other common ignores
+*.vsix
+*.docstates
+repl_history
