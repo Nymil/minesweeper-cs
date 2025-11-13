@@ -60,8 +60,18 @@ public class Grid
         }
 
         Cell clickedCell = this[pos];
-        if (clickedCell.IsFlagged || clickedCell.IsRevealed)
+        if (clickedCell.IsFlagged)
         {
+            return;
+        }
+
+        // reveal neighbors
+        if (clickedCell.IsRevealed)
+        {
+            pos.GetNeighborPositions().ToList().ForEach(neighborPos =>
+            {
+                if (!this[neighborPos].IsRevealed) Reveal(neighborPos);
+            });
             return;
         }
 
