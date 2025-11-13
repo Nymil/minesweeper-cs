@@ -65,13 +65,10 @@ public class Grid
             return;
         }
 
-        // reveal neighbors
+        // chording
         if (clickedCell.IsRevealed)
         {
-            pos.GetNeighborPositions().ToList().ForEach(neighborPos =>
-            {
-                if (!this[neighborPos].IsRevealed) Reveal(neighborPos);
-            });
+            checkChording(clickedCell);
             return;
         }
 
@@ -95,6 +92,27 @@ public class Grid
         int newlyRevealed = FloodReveal(pos);
         _revealedCount += newlyRevealed;
         CheckVictory();
+    }
+
+    private void checkChording(Cell clickedCell)
+    {
+        CellPosition pos = clickedCell.Position;
+        IEnumerable<CellPosition> neighborPositions = pos.GetNeighborPositions();
+        if (neighborPositions.Count(neighborPos => this[neighborPos].IsFlagged) != clickedCell.AdjacentMines)
+        {
+            return;
+        }
+
+        foreach (CellPosition neighborPos in neighborPositions)
+        {
+            Cell neighborCell = this[neighborPos];
+            if (neighborCell.IsRevealed)
+            {
+                continue;
+            }
+
+            Reveal(neighborPos);
+        }
     }
 
     private int FloodReveal(CellPosition start)
